@@ -1,0 +1,97 @@
+body {
+    background-image: url('kosmos.jpg'); /* Указываем путь к нашей картинке */
+    background-size: cover; /* Растягиваем картинку, чтобы она заполнила весь экран */
+    background-position: center; /* Центрируем картинку */
+    background-attachment: fixed; /* Фон не будет прокручиваться вместе со страницей */
+    background-repeat: no-repeat; /* Картинка не будет повторяться, если она маленькая */
+    
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding-top: 20px;
+    margin: 0; /* Убираем стандартные отступы, чтобы фон был на весь экран */
+    min-height: 100vh; /* Растягиваем body на всю высоту экрана */
+}
+
+h1 {
+    color: #c7a55f; /* Золотистый цвет для заголовка */
+}
+
+/* Контейнеры для стопок */
+.pile-container {
+    margin: 30px auto;
+}
+
+.card-pile {
+    position: relative;
+    width: 250px;
+    height: 400px;
+    margin: 10px auto;
+    border: 3px dashed #444;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили для карты (и рубашки, и лица) */
+.card {
+    width: 250px;
+    height: 400px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    background-image: url('card-back-image.png'); /* Убедись, что картинка так называется! */
+    cursor: pointer;
+}
+
+.card-face {
+    background-color: #f5eeda; /* Цвет старого пергамента */
+    color: #3b312a;
+}
+
+.card-face h3 {
+    margin-top: 0;
+    color: #7a2a2a;
+}
+
+/* Зона для анимации */
+#animation-zone {
+    height: 420px;
+    perspective: 1500px; /* Важно для 3D-эффекта */
+    position: relative;
+}
+
+/* Стили для карты, когда она находится в зоне анимации */
+.flipping-card {
+    position: absolute;
+    width: 250px;
+    height: 400px;
+    left: 50%;
+    top: 0;
+    transform-style: preserve-3d;
+    transition: transform 1s; /* Длительность анимации */
+    margin-left: -125px; /* Центрируем карту */
+}
+
+.flipping-card .flipper-back, .flipping-card .flipper-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Прячем обратную сторону */
+}
+
+.flipping-card .flipper-face {
+    transform: rotateY(180deg); /* Поворачиваем лицо изначально */
+}
